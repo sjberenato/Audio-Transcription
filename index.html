@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Real‑Time Transcription Demo</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>Real‑Time Transcription Demo</h1>
+    <p class="sub">Plays an MP3 you upload and <em>appears</em> to transcribe it live.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1) Load your media</h2>
+      <div class="uploader">
+        <label class="file">
+          <input type="file" id="audioFile" accept="audio/mpeg,audio/mp3,audio/*" />
+          <span>Choose MP3…</span>
+        </label>
+        <label class="file">
+          <input type="file" id="transcriptFile" accept=".txt,.json,text/plain,application/json" />
+          <span>Choose transcript (.txt or .json)…</span>
+        </label>
+      </div>
+      <p class="hint">Or keep the defaults: place <code>assets/demo.mp3</code> and <code>assets/transcript.txt</code> when deploying.</p>
+    </section>
+
+    <section class="card">
+      <h2>2) Controls</h2>
+      <div class="controls">
+        <button id="loadDefaults">Load default files</button>
+        <button id="playPause" disabled>Play</button>
+        <button id="restart" disabled>Restart</button>
+        <label class="speed">
+          Speed
+          <select id="speed">
+            <option value="1">1×</option>
+            <option value="1.25">1.25×</option>
+            <option value="1.5">1.5×</option>
+            <option value="2">2×</option>
+          </select>
+        </label>
+      </div>
+
+      <audio id="player" preload="metadata" controls class="audio-el"></audio>
+      <div class="progress">
+        <span id="time">00:00 / 00:00</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) “Live” transcript</h2>
+      <div id="transcriptContainer" class="transcript"></div>
+      <div id="status" class="status idle">Idle</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built for demo purposes — no actual speech‑to‑text occurs.</p>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
